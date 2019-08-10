@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.main-title{
+  background: blue;
+  animation-direction: reverse;
+  font-family: 'Courier New', Courier, monospace;
+}

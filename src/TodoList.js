@@ -3,6 +3,7 @@ import { TodoListItem } from './TodoListItem';
 //aula 3
 export class TodoList extends Component {
     state = {
+        listTitle: '',
         taskItems: [
             {
                 id: 1, name: 'Task 1', status: 'pending'
@@ -34,15 +35,24 @@ export class TodoList extends Component {
         }
 
         return(
-            <ul>            
-               {this.state.taskItems.map(task =>( 
-                <li key={task.id}>
-                <TodoListItem onToggleCompleted={handleOnToggleCompleted} {...task} />
-                </li>
-               ))
-               }
-            </ul>
+            <div>
+                <h1>{this.state.listTitle}</h1>
+                <ul>            
+                    {this.state.taskItems.map(task =>( 
+                    <li key={task.id}>
+                        <TodoListItem onToggleCompleted={handleOnToggleCompleted} {...task} />
+                    </li>
+                    ))
+                    }
+                </ul>
+            </div>
+            
         )
+    }
+
+    componentDidMount(){
+        console.log('called after render()')
+        this.setState({listTitle: 'my list '})
     }
     
 }

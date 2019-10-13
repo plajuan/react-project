@@ -13,11 +13,14 @@ export function TodoList(){
             id: 3, name: 'Task 3', status: 'pending'
         },
     ]
+
+    const handle = (taskName) => alert(taskName)
+
     return(
         <ul>            
            {taskItems.map(task =>( 
             <li key={task.id}>
-            <TodoListItem {...task} />
+            <TodoListItem onShowTaskName={handle} {...task} />
             </li>
            ))
            }

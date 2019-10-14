@@ -7,7 +7,7 @@ export class Users extends Component {
     }
     //economiza chamadas pois só faz se o valor for diferente
     componentDidUpdate(prevProps){
-        if(prevProps.searchFor != this.props.searchFor){
+        if(prevProps.searchFor !== this.props.searchFor){
             if(this.state.usersList.includes(this.props.searchFor)){
                 this.setState({
                     givenPropIsAnUser: true

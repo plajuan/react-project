@@ -1,25 +1,20 @@
-import React, {Component} from 'react'
+import React, {useState, useEffect} from 'react'
 
-export class Clock extends Component {
-    state = {
-        date: new Date()
-    }
-
-    componentDidMount(){
-        this.timerId = setInterval(()=>{
-           this.setState({
-               date : new Date()
-           }) 
-        }, 1000)
-    }
-
-    componentWillUnmount(){
-        clearInterval(this.timerId)
-    }
+export function Clock() {
+    const [date, setDate] = useState(new Date())
     
-    render(){        
-        return(
-            <h1>{this.state.date.toLocaleTimeString()}</h1>            
-        )
-    }
+
+    //trata todos os efeitos colaterais: alteração de propriedade, alteração no estado, 
+    //alteração de valores dentro das propriedades, alteração no state
+    useEffect(()=>{
+        let timerId = setInterval(()=>{ setDate(new Date()) }, 1000)
+         return () => {
+            clearInterval(timerId)
+         }
+    })
+
+    
+    return(
+        <h1>{date.toLocaleTimeString()}</h1>            
+    )
 }
